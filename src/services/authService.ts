@@ -23,8 +23,14 @@ export async function registerUser(userData: {
   });
 
   if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.error || 'Failed to register user');
+    const text = await response.text();
+    console.error('Register error:', response.status, text);
+    try {
+      const error = JSON.parse(text);
+      throw new Error(error.error || 'Failed to register user');
+    } catch {
+      throw new Error(`Failed to register: ${response.status}`);
+    }
   }
 
   const data = await response.json();
@@ -39,14 +45,23 @@ export async function loginUser(uid: string, password: string): Promise<User | n
   });
 
   if (!response.ok) {
-    const error = await response.json();
-    if (response.status === 404) {
-      throw new Error('User not found. Please register first.');
+    const text = await response.text();
+    console.error('Login error:', response.status, text);
+    try {
+      const error = JSON.parse(text);
+      if (response.status === 404) {
+        throw new Error('User not found. Please register first.');
+      }
+      if (response.status === 401) {
+        throw new Error('Invalid password');
+      }
+      throw new Error(error.error || 'Failed to login');
+    } catch (e: any) {
+      if (e.message.includes('User not found') || e.message.includes('Invalid password')) {
+        throw e;
+      }
+      throw new Error(`Login failed: ${response.status}`);
     }
-    if (response.status === 401) {
-      throw new Error('Invalid password');
-    }
-    throw new Error(error.error || 'Failed to login');
   }
 
   return await response.json();
