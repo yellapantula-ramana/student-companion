@@ -8,36 +8,31 @@
   "rewrites": [
     {
       "source": "/api/health",
-      "destination": "/api/health.ts"
+      "destination": "/api/health"
     },
     {
       "source": "/api/auth/register",
-      "destination": "/api/auth/register.ts"
+      "destination": "/api/auth/register"
     },
     {
       "source": "/api/auth/login",
-      "destination": "/api/auth/login.ts"
+      "destination": "/api/auth/login"
     },
     {
       "source": "/api/syllabus",
-      "destination": "/api/syllabus.ts"
+      "destination": "/api/syllabus"
     },
     {
       "source": "/api/learning-paths",
-      "destination": "/api/learning-paths.ts"
+      "destination": "/api/learning-paths"
     },
     {
       "source": "/api/practice-tests",
-      "destination": "/api/practice-tests.ts"
+      "destination": "/api/practice-tests"
     },
     {
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "functions": {
-    "api/**/*.ts": {
-      "maxDuration": 10
-    }
-  }
+  ]
 }

@@ -9,6 +9,16 @@ export interface User {
   role: string;
 }
 
+async function parseJsonOrText(response: Response): Promise<any> {
+  const text = await response.text();
+  try {
+    return JSON.parse(text);
+  } catch {
+    // Return as text if not JSON (likely an HTML error page)
+    return { error: `Server returned: ${response.status} - ${text.substring(0, 200)}` };
+  }
+}
+
 export async function registerUser(userData: {
   uid: string;
   email: string;
@@ -16,53 +26,49 @@ export async function registerUser(userData: {
   photo_url?: string;
   password: string;
 }): Promise<User> {
+  console.log('Registering user:', userData.email);
+
   const response = await fetch(`${API_BASE_URL}/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(userData),
   });
 
+  console.log('Register response status:', response.status);
+
+  const data = await parseJsonOrText(response);
+  console.log('Register response data:', data);
+
   if (!response.ok) {
-    const text = await response.text();
-    console.error('Register error:', response.status, text);
-    try {
-      const error = JSON.parse(text);
-      throw new Error(error.error || 'Failed to register user');
-    } catch {
-      throw new Error(`Failed to register: ${response.status}`);
-    }
+    throw new Error(data.error || 'Failed to register user');
   }
 
-  const data = await response.json();
   return data.user;
 }
 
 export async function loginUser(uid: string, password: string): Promise<User | null> {
+  console.log('Logging in user:', uid);
+
   const response = await fetch(`${API_BASE_URL}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ uid, password }),
   });
 
+  console.log('Login response status:', response.status);
+
+  const data = await parseJsonOrText(response);
+  console.log('Login response data:', data);
+
   if (!response.ok) {
-    const text = await response.text();
-    console.error('Login error:', response.status, text);
-    try {
-      const error = JSON.parse(text);
-      if (response.status === 404) {
-        throw new Error('User not found. Please register first.');
-      }
-      if (response.status === 401) {
-        throw new Error('Invalid password');
-      }
-      throw new Error(error.error || 'Failed to login');
-    } catch (e: any) {
-      if (e.message.includes('User not found') || e.message.includes('Invalid password')) {
-        throw e;
-      }
-      throw new Error(`Login failed: ${response.status}`);
+    if (data.error?.includes('User not found')) {
+      throw new Error('User not found. Please register first.');
     }
+    if (data.error?.includes('Invalid password')) {
+      throw new Error('Invalid password');
+    }
+    throw new Error(data.error || 'Failed to login');
   }
 
-  return await response.json();
+  return data;
 }
