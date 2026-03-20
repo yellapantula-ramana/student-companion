@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { query } from '../server/db';
+import { query } from './db';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Enable CORS

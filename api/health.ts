@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { query } from '../server/db';
+import { query } from './db';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Enable CORS
@@ -13,8 +13,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
+    console.log('=== HEALTH CHECK ===');
     console.log('DATABASE_URL exists:', !!process.env.DATABASE_URL);
-    console.log('DATABASE_URL preview:', process.env.DATABASE_URL?.substring(0, 20) + '...');
+    console.log('DATABASE_URL value:', process.env.DATABASE_URL ? 'set (length: ' + process.env.DATABASE_URL.length + ')' : 'NOT SET');
+    console.log('NODE_ENV:', process.env.NODE_ENV);
+
+    if (!process.env.DATABASE_URL) {
+      return res.status(500).json({ 
+        error: 'DATABASE_URL not configured',
+        message: 'Please add DATABASE_URL environment variable in Vercel dashboard'
+      });
+    }
 
     // Test database connection
     const testResult = await query('SELECT NOW()');

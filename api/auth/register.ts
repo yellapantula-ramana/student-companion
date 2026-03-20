@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { query } from '../../server/db';
+import { query } from '../db';
 import bcrypt from 'bcrypt';
 
 const SALT_ROUNDS = 10;

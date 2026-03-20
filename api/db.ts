@@ -1,4 +1,5 @@
 import pg from 'pg';
+
 const { Pool } = pg;
 
 // Database configuration - supports both individual params and connection string
