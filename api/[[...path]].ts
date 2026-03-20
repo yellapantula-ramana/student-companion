@@ -110,14 +110,19 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   await runMiddleware(req, res, corsMiddleware);
   await ensureMigrations();
 
+  // Vercel strips /api prefix, so we handle routes without it
+  const url = req.url || '';
+  // Remove query string for path matching
+  const path = url.split('?')[0];
+
   try {
-    // Health check
-    if (req.method === 'GET' && req.url === '/api/health') {
+    // Health check: /api/health -> /health
+    if (req.method === 'GET' && path === '/health') {
       return res.status(200).json({ status: 'ok', message: 'Backend is running' });
     }
 
     // Root API info
-    if (req.method === 'GET' && req.url === '/api') {
+    if (req.method === 'GET' && path === '/') {
       return res.status(200).json({
         message: 'Student Companion API',
         endpoints: {
@@ -129,9 +134,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
     }
 
-    // Syllabus routes
-    if (req.url?.startsWith('/api/syllabus/')) {
-      const id = req.url.split('/').pop();
+    // Syllabus routes: /api/syllabus/:id -> /syllabus/:id
+    if (path.startsWith('/syllabus/')) {
+      const id = path.split('/').pop();
       if (req.method === 'GET') {
         const result = await query('SELECT chapters FROM syllabus WHERE id = $1', [id]);
         if (result.rows.length > 0) {
@@ -142,8 +147,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     }
 
-    if (req.url === '/api/syllabus' && req.method === 'POST') {
-      const { id, subject, chapters } = req.body;
+    if (path === '/syllabus' && req.method === 'POST') {
+      const { id, subject, chapters } = req.body || {};
       await query(
         'INSERT INTO syllabus (id, subject, chapters) VALUES ($1, $2, $3) ON CONFLICT (id) DO UPDATE SET subject = $2, chapters = $3, updated_at = CURRENT_TIMESTAMP',
         [id, subject, JSON.stringify(chapters)]
@@ -151,9 +156,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).json({ success: true, id });
     }
 
-    // Learning Paths routes
-    if (req.url?.startsWith('/api/learning-paths/')) {
-      const id = req.url.split('/').pop();
+    // Learning Paths routes: /api/learning-paths/:id -> /learning-paths/:id
+    if (path.startsWith('/learning-paths/')) {
+      const id = path.split('/').pop();
       if (req.method === 'GET') {
         const result = await query('SELECT * FROM learning_paths WHERE id = $1', [id]);
         if (result.rows.length > 0) {
@@ -164,8 +169,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     }
 
-    if (req.url === '/api/learning-paths' && req.method === 'POST') {
-      const { id, subject, chapter, content, pdf_url, is_generated } = req.body;
+    if (path === '/learning-paths' && req.method === 'POST') {
+      const { id, subject, chapter, content, pdf_url, is_generated } = req.body || {};
       await query(
         'INSERT INTO learning_paths (id, subject, chapter, content, pdf_url, is_generated) VALUES ($1, $2, $3, $4, $5, $6) ON CONFLICT (id) DO UPDATE SET subject = $2, chapter = $3, content = $4, pdf_url = $5, is_generated = $6, created_at = CURRENT_TIMESTAMP',
         [id, subject, chapter, content, pdf_url, is_generated]
@@ -174,8 +179,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // Practice Tests routes
-    if (req.url === '/api/practice-tests' && req.method === 'GET') {
-      const { subject, chapter } = req.query;
+    if (path === '/practice-tests' && req.method === 'GET') {
+      const { subject, chapter } = req.query || {};
       const result = await query(
         'SELECT * FROM practice_tests WHERE subject = $1 AND chapter = $2',
         [subject, chapter]
@@ -183,8 +188,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).json(result.rows);
     }
 
-    if (req.url === '/api/practice-tests' && req.method === 'POST') {
-      const tests = req.body;
+    if (path === '/practice-tests' && req.method === 'POST') {
+      const tests = req.body || [];
       for (const test of tests) {
         const { id, subject, chapter, test_id, questions } = test;
         await query(
@@ -196,8 +201,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // Auth routes
-    if (req.url === '/api/auth/register' && req.method === 'POST') {
-      const { uid, email, display_name, photo_url, password } = req.body;
+    if (path === '/auth/register' && req.method === 'POST') {
+      const { uid, email, display_name, photo_url, password } = req.body || {};
       if (!uid || !email || !password) {
         return res.status(400).json({ error: 'UID, email, and password are required' });
       }
@@ -210,8 +215,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).json({ success: true, user: { uid, email, display_name, photo_url, role } });
     }
 
-    if (req.url === '/api/auth/login' && req.method === 'POST') {
-      const { uid, password } = req.body;
+    if (path === '/auth/login' && req.method === 'POST') {
+      const { uid, password } = req.body || {};
       if (!uid || !password) {
         return res.status(400).json({ error: 'UID and password are required' });
       }
@@ -232,7 +237,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(404).json({ error: 'Not found' });
 
   } catch (error: any) {
-    console.error('API Error:', error.message);
+    console.error('API Error:', error.message, error.stack);
     return res.status(500).json({ error: 'Internal server error', details: error.message });
   }
 }
