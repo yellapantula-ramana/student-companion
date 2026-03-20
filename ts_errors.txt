@@ -1,0 +1,6 @@
+api/auth/login.ts(1,52): error TS2307: Cannot find module '@vercel/node' or its corresponding type declarations.
+api/auth/register.ts(1,52): error TS2307: Cannot find module '@vercel/node' or its corresponding type declarations.
+api/health.ts(1,52): error TS2307: Cannot find module '@vercel/node' or its corresponding type declarations.
+api/learning-paths.ts(1,52): error TS2307: Cannot find module '@vercel/node' or its corresponding type declarations.
+api/practice-tests.ts(1,52): error TS2307: Cannot find module '@vercel/node' or its corresponding type declarations.
+api/syllabus.ts(1,52): error TS2307: Cannot find module '@vercel/node' or its corresponding type declarations.
