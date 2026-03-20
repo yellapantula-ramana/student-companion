@@ -4,40 +4,5 @@
   "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "framework": "vite",
-  "functions": {
-    "api/**/*.ts": {
-      "maxDuration": 10
-    }
-  },
-  "routes": [
-    {
-      "src": "/api/health",
-      "dest": "/api/health.ts"
-    },
-    {
-      "src": "/api/auth/register",
-      "dest": "/api/auth/register.ts"
-    },
-    {
-      "src": "/api/auth/login",
-      "dest": "/api/auth/login.ts"
-    },
-    {
-      "src": "/api/syllabus",
-      "dest": "/api/syllabus.ts"
-    },
-    {
-      "src": "/api/learning-paths",
-      "dest": "/api/learning-paths.ts"
-    },
-    {
-      "src": "/api/practice-tests",
-      "dest": "/api/practice-tests.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
+  "framework": "vite"
 }
