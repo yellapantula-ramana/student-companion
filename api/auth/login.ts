@@ -5,6 +5,12 @@ import bcrypt from 'bcrypt';
 const SALT_ROUNDS = 10;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  console.log('=== LOGIN API CALLED ===');
+  console.log('Method:', req.method);
+  console.log('URL:', req.url);
+  console.log('Headers:', JSON.stringify(req.headers));
+  console.log('Body:', JSON.stringify(req.body));
+
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -12,17 +18,19 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   // Handle preflight
   if (req.method === 'OPTIONS') {
+    console.log('Handling OPTIONS preflight');
     return res.status(200).end();
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    console.log('Wrong method:', req.method);
+    return res.status(405).json({ error: 'Method not allowed', received: req.method });
   }
 
   try {
     console.log('Login request received:', req.body);
 
-    const { uid, password } = req.body;
+    const { uid, password } = req.body || {};
 
     if (!uid || !password) {
       return res.status(400).json({ error: 'UID and password are required' });

@@ -4,35 +4,5 @@
   "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "framework": "vite",
-  "rewrites": [
-    {
-      "source": "/api/health",
-      "destination": "/api/health"
-    },
-    {
-      "source": "/api/auth/register",
-      "destination": "/api/auth/register"
-    },
-    {
-      "source": "/api/auth/login",
-      "destination": "/api/auth/login"
-    },
-    {
-      "source": "/api/syllabus",
-      "destination": "/api/syllabus"
-    },
-    {
-      "source": "/api/learning-paths",
-      "destination": "/api/learning-paths"
-    },
-    {
-      "source": "/api/practice-tests",
-      "destination": "/api/practice-tests"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "framework": "vite"
 }
