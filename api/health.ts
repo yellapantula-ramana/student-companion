@@ -13,6 +13,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
+    console.log('DATABASE_URL exists:', !!process.env.DATABASE_URL);
+    console.log('DATABASE_URL preview:', process.env.DATABASE_URL?.substring(0, 20) + '...');
+
+    // Test database connection
+    const testResult = await query('SELECT NOW()');
+    console.log('DB connection test:', testResult.rows[0]);
+
     // Run migrations
     await query(`
       CREATE TABLE IF NOT EXISTS syllabus (
@@ -63,9 +70,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       ADD COLUMN IF NOT EXISTS password_hash TEXT
     `);
 
-    res.status(200).json({ status: 'ok', message: 'Backend is running' });
+    res.status(200).json({ status: 'ok', message: 'Backend is running', db: 'connected' });
   } catch (error: any) {
-    console.error('Health check error:', error.message);
-    res.status(500).json({ error: 'Internal server error', details: error.message });
+    console.error('Health check error:', error.message, error.stack);
+    res.status(500).json({ error: 'Internal server error', details: error.message, stack: error.stack });
   }
 }

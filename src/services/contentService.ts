@@ -42,11 +42,17 @@ export async function getOrGenerateSyllabus(subject: string) {
 
   try {
     const response = await fetch(`${API_BASE_URL}/syllabus?id=${subjectId}`);
-    if (response.ok) {
-      return await response.json();
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Syllabus API error:', response.status, errorText);
+      throw new Error(`Failed to fetch syllabus: ${response.status} ${errorText}`);
     }
-  } catch (error) {
+
+    return await response.json();
+  } catch (error: any) {
     console.warn("Backend fetch failed, generating new syllabus...", error);
+    throw error;
   }
 
   // Generate Syllabus

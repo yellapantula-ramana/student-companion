@@ -8,15 +8,18 @@ export function Syllabus() {
   const [activeSubject, setActiveSubject] = useState(SUBJECTS[0]);
   const [syllabus, setSyllabus] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchSyllabus = async () => {
       setIsLoading(true);
+      setError(null);
       try {
         const data = await getOrGenerateSyllabus(activeSubject);
         setSyllabus(data);
-      } catch (error) {
+      } catch (error: any) {
         console.error("Failed to fetch syllabus:", error);
+        setError(error.message || "Failed to load syllabus. Please check your connection.");
       } finally {
         setIsLoading(false);
       }
@@ -56,6 +59,19 @@ export function Syllabus() {
           <div className="flex flex-col items-center justify-center h-64 text-slate-400 space-y-4">
             <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
             <p>Loading {activeSubject} syllabus...</p>
+          </div>
+        ) : error ? (
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+              <p className="text-red-800 font-medium">Error loading syllabus</p>
+              <p className="text-red-600 text-sm mt-2">{error}</p>
+              <button
+                onClick={() => window.location.reload()}
+                className="mt-4 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+              >
+                Retry
+              </button>
+            </div>
           </div>
         ) : syllabus ? (
           <div className="max-w-4xl mx-auto space-y-4 lg:space-y-6">
