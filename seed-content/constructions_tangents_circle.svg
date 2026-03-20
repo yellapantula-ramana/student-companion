@@ -1,0 +1,121 @@
+<svg width="800" height="550" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="550" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#2c3e50">Construction of Tangents to Circle</text>
+  
+  <!-- Step 1: Circle and External Point -->
+  <g transform="translate(80, 70)">
+    <text x="100" y="-10" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2c3e50">Step 1: Circle & Point P</text>
+    
+    <!-- Circle -->
+    <circle cx="100" cy="80" r="60" fill="#ecf0f1" stroke="#3498db" stroke-width="2"/>
+    
+    <!-- Center -->
+    <circle cx="100" cy="80" r="3" fill="#e74c3c"/>
+    <text x="105" y="75" font-family="Arial" font-size="11" font-weight="bold" fill="#e74c3c">O</text>
+    
+    <!-- External Point -->
+    <circle cx="220" cy="80" r="4" fill="#f39c12"/>
+    <text x="225" y="75" font-family="Arial" font-size="11" font-weight="bold" fill="#f39c12">P</text>
+    
+    <!-- Line OP -->
+    <line x1="100" y1="80" x2="220" y2="80" stroke="#95a5a6" stroke-width="2" stroke-dasharray="5,5"/>
+    
+    <text x="160" y="95" text-anchor="middle" font-family="Arial" font-size="10" fill="#2c3e50">OP = 7 cm</text>
+    <text x="70" y="50" font-family="Arial" font-size="10" fill="#3498db">r = 4 cm</text>
+  </g>
+  
+  <!-- Step 2: Bisect OP -->
+  <g transform="translate(450, 70)">
+    <text x="100" y="-10" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2c3e50">Step 2: Bisect OP at M</text>
+    
+    <!-- Circle -->
+    <circle cx="100" cy="80" r="60" fill="#ecf0f1" stroke="#3498db" stroke-width="2"/>
+    <circle cx="100" cy="80" r="3" fill="#e74c3c"/>
+    <text x="105" y="75" font-family="Arial" font-size="11" fill="#e74c3c">O</text>
+    
+    <!-- Point P -->
+    <circle cx="220" cy="80" r="4" fill="#f39c12"/>
+    <text x="225" y="75" font-family="Arial" font-size="11" fill="#f39c12">P</text>
+    
+    <!-- Midpoint M -->
+    <circle cx="160" cy="80" r="3" fill="#2ecc71"/>
+    <text x="165" y="75" font-family="Arial" font-size="11" font-weight="bold" fill="#2ecc71">M</text>
+    
+    <!-- Arcs for bisection -->
+    <path d="M 140 50 Q 160 40 180 50" fill="none" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3"/>
+    <path d="M 140 110 Q 160 120 180 110" fill="none" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3"/>
+  </g>
+  
+  <!-- Step 3: Auxiliary Circle -->
+  <g transform="translate(80, 280)">
+    <text x="100" y="-10" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2c3e50">Step 3: Circle with Center M</text>
+    
+    <!-- Original Circle -->
+    <circle cx="100" cy="80" r="60" fill="#ecf0f1" stroke="#3498db" stroke-width="2"/>
+    <circle cx="100" cy="80" r="3" fill="#e74c3c"/>
+    <text x="105" y="75" font-family="Arial" font-size="11" fill="#e74c3c">O</text>
+    
+    <!-- Auxiliary Circle -->
+    <circle cx="160" cy="80" r="60" fill="none" stroke="#2ecc71" stroke-width="2" stroke-dasharray="5,5"/>
+    <circle cx="160" cy="80" r="3" fill="#2ecc71"/>
+    <text x="165" y="75" font-family="Arial" font-size="11" fill="#2ecc71">M</text>
+    
+    <!-- Point P -->
+    <circle cx="220" cy="80" r="4" fill="#f39c12"/>
+    <text x="225" y="75" font-family="Arial" font-size="11" fill="#f39c12">P</text>
+    
+    <!-- Intersection Points -->
+    <circle cx="130" cy="35" r="3" fill="#9b59b6"/>
+    <circle cx="130" cy="125" r="3" fill="#9b59b6"/>
+    <text x="120" y="30" font-family="Arial" font-size="10" fill="#9b59b6">T</text>
+    <text x="120" y="145" font-family="Arial" font-size="10" fill="#9b59b6">T'</text>
+  </g>
+  
+  <!-- Step 4: Complete Tangents -->
+  <g transform="translate(450, 280)">
+    <text x="100" y="-10" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2c3e50">Step 4: Join PT and PT'</text>
+    
+    <!-- Original Circle -->
+    <circle cx="100" cy="80" r="60" fill="#ecf0f1" stroke="#3498db" stroke-width="2"/>
+    <circle cx="100" cy="80" r="3" fill="#e74c3c"/>
+    <text x="105" y="75" font-family="Arial" font-size="11" fill="#e74c3c">O</text>
+    
+    <!-- Point P -->
+    <circle cx="220" cy="80" r="4" fill="#f39c12"/>
+    <text x="225" y="75" font-family="Arial" font-size="11" fill="#f39c12">P</text>
+    
+    <!-- Tangents -->
+    <line x1="220" y1="80" x2="130" y2="35" stroke="#e74c3c" stroke-width="2"/>
+    <line x1="220" y1="80" x2="130" y2="125" stroke="#e74c3c" stroke-width="2"/>
+    
+    <!-- Points of Contact -->
+    <circle cx="130" cy="35" r="3" fill="#9b59b6"/>
+    <circle cx="130" cy="125" r="3" fill="#9b59b6"/>
+    <text x="120" y="30" font-family="Arial" font-size="10" font-weight="bold" fill="#9b59b6">T</text>
+    <text x="120" y="145" font-family="Arial" font-size="10" font-weight="bold" fill="#9b59b6">T'</text>
+    
+    <!-- Radii -->
+    <line x1="100" y1="80" x2="130" y2="35" stroke="#3498db" stroke-width="2"/>
+    <line x1="100" y1="80" x2="130" y2="125" stroke="#3498db" stroke-width="2"/>
+    
+    <!-- Right Angle Symbols -->
+    <line x1="135" y1="42" x2="142" y2="42" stroke="#2c3e50" stroke-width="1"/>
+    <line x1="142" y1="42" x2="142" y2="49" stroke="#2c3e50" stroke-width="1"/>
+    
+    <line x1="135" y1="118" x2="142" y2="118" stroke="#2c3e50" stroke-width="1"/>
+    <line x1="142" y1="118" x2="142" y2="111" stroke="#2c3e50" stroke-width="1"/>
+    
+    <text x="80" y="160" font-family="Arial" font-size="10" fill="#2c3e50">∠OTP = 90°</text>
+  </g>
+  
+  <!-- Justification Box -->
+  <g transform="translate(200, 480)">
+    <rect x="0" y="0" width="400" height="60" fill="#fef9e7" stroke="#f39c12" stroke-width="1" rx="5"/>
+    <text x="200" y="20" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#d68910">Justification</text>
+    <text x="200" y="40" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">∠OTP = 90° (angle in semicircle)</text>
+    <text x="200" y="55" text-anchor="middle" font-family="Arial" font-size="11" fill="#d68910" font-weight="bold">PT = √(OP² - OT²) = √(7² - 4²) = √33 ≈ 5.74 cm</text>
+  </g>
+</svg>

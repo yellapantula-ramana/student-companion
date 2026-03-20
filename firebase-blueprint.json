@@ -1,0 +1,151 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user of the Study Companion app.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["student", "admin"] }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "ChapterState": {
+      "title": "ChapterState",
+      "description": "Tracks a student's progress through a chapter.",
+      "type": "object",
+      "properties": {
+        "student_id": { "type": "string", "description": "User UID" },
+        "subject": { "type": "string" },
+        "chapter": { "type": "string" },
+        "subtopics": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "current_subtopic_index": { "type": "number" },
+        "current_stage": { "type": "string", "enum": ["INTRO", "CONCEPT", "GUIDED_PRACTICE", "ADAPTIVE_PRACTICE", "EXAM", "ANALYSIS", "REVISION"] },
+        "mastery_level": { "type": "number" },
+        "history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "stage": { "type": "string" },
+              "score": { "type": "number" },
+              "timestamp": { "type": "string" }
+            },
+            "required": ["stage", "timestamp"]
+          }
+        },
+        "content_cache": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["student_id", "chapter", "subtopics", "current_subtopic_index", "current_stage", "mastery_level", "history", "updatedAt"]
+    },
+    "TutorMessage": {
+      "title": "TutorMessage",
+      "description": "A message in the AI Tutor chat.",
+      "type": "object",
+      "properties": {
+        "student_id": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "model"] },
+        "text": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["student_id", "role", "text", "timestamp"]
+    },
+    "Syllabus": {
+      "title": "Syllabus",
+      "description": "CBSE Class 10 Syllabus for a specific subject.",
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string" },
+        "chapters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "subtopics": { "type": "array", "items": { "type": "string" } },
+              "difficulty": { "type": "string", "enum": ["Easy", "Medium", "Hard"] }
+            },
+            "required": ["title", "subtopics", "difficulty"]
+          }
+        },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["subject", "chapters", "updatedAt"]
+    },
+    "LearningPath": {
+      "title": "LearningPath",
+      "description": "Pre-generated learning path PDF metadata.",
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string" },
+        "chapter": { "type": "string" },
+        "pdf_url": { "type": "string" },
+        "is_generated": { "type": "boolean" },
+        "created_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["subject", "chapter", "pdf_url", "is_generated", "created_at"]
+    },
+    "PracticeTest": {
+      "title": "PracticeTest",
+      "description": "Pre-generated practice test for a chapter.",
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string" },
+        "chapter": { "type": "string" },
+        "test_id": { "type": "string" },
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string", "enum": ["MCQ", "ShortAnswer", "LongAnswer"] },
+              "question": { "type": "string" },
+              "options": { "type": "array", "items": { "type": "string" } },
+              "answer": { "type": "string" },
+              "explanation": { "type": "string" }
+            },
+            "required": ["type", "question", "answer"]
+          }
+        },
+        "created_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["subject", "chapter", "test_id", "questions", "created_at"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Stores user profiles."
+    },
+    "/chapter_states/{stateId}": {
+      "schema": { "$ref": "#/entities/ChapterState" },
+      "description": "Stores student progress for chapters."
+    },
+    "/tutor_messages/{messageId}": {
+      "schema": { "$ref": "#/entities/TutorMessage" },
+      "description": "Stores chat messages between student and AI Tutor."
+    },
+    "/syllabus/{subjectId}": {
+      "schema": { "$ref": "#/entities/Syllabus" },
+      "description": "Stores syllabus structure per subject."
+    },
+    "/learning_paths/{pathId}": {
+      "schema": { "$ref": "#/entities/LearningPath" },
+      "description": "Stores metadata and URLs for generated learning path PDFs."
+    },
+    "/practice_tests/{testId}": {
+      "schema": { "$ref": "#/entities/PracticeTest" },
+      "description": "Stores generated practice tests for chapters."
+    }
+  }
+}

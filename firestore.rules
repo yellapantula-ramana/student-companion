@@ -1,0 +1,209 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: users
+    // Document ID: {userId}
+    // Fields:
+    //   - uid: string (required) - Firebase Auth UID
+    //   - email: string (required) - User email
+    //   - displayName: string (optional) - User display name
+    //   - photoURL: string (optional) - User photo URL
+    //   - role: string (required) - 'student' or 'admin'
+    //
+    // Collection: chapter_states
+    // Document ID: {stateId}
+    // Fields:
+    //   - student_id: string (required) - User UID
+    //   - chapter: string (required) - Chapter name
+    //   - subtopics: list (required) - List of subtopics
+    //   - current_subtopic_index: number (required) - Current subtopic index
+    //   - current_stage: string (required) - Current stage
+    //   - mastery_level: number (required) - Mastery level
+    //   - history: list (required) - List of history objects
+    //   - updatedAt: string (required) - Last updated timestamp (ISO 8601)
+    //
+    // Collection: tutor_messages
+    // Document ID: {messageId}
+    // Fields:
+    //   - student_id: string (required) - User UID
+    //   - role: string (required) - 'user' or 'model'
+    //   - text: string (required) - Message text
+    //   - timestamp: string (required) - Message timestamp (ISO 8601)
+    //
+    // Collection: syllabus
+    // Document ID: {subjectId}
+    // Fields:
+    //   - subject: string (required)
+    //   - chapters: list (required)
+    //   - updatedAt: string (required)
+    //
+    // Collection: learning_paths
+    // Document ID: {pathId}
+    // Fields:
+    //   - subject: string (required)
+    //   - chapter: string (required)
+    //   - pdf_url: string (required)
+    //   - is_generated: boolean (required)
+    //   - created_at: string (required)
+    //
+    // Collection: practice_tests
+    // Document ID: {testId}
+    // Fields:
+    //   - subject: string (required)
+    //   - chapter: string (required)
+    //   - test_id: string (required)
+    //   - questions: list (required)
+    //   - created_at: string (required)
+    //
+    // ===============================================================
+
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isDocOwner() {
+      return isAuthenticated() && request.auth.uid == resource.data.student_id;
+    }
+
+    function uidUnchanged() {
+      return !('uid' in request.resource.data) || request.resource.data.uid == request.auth.uid;
+    }
+
+    function uidNotModified() {
+      return !('uid' in request.resource.data) || request.resource.data.uid == resource.data.uid;
+    }
+
+    function studentIdUnchanged() {
+      return !('student_id' in request.resource.data) || request.resource.data.student_id == request.auth.uid;
+    }
+
+    function studentIdNotModified() {
+      return !('student_id' in request.resource.data) || request.resource.data.student_id == resource.data.student_id;
+    }
+
+    function hasOnlyAllowedFields(fields) {
+      return request.resource.data.keys().hasOnly(fields);
+    }
+
+    function isValidEmail(email) {
+      return email is string && email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+         (request.auth.token.email == "ylalitha.rao@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function isValidUser(data) {
+      return hasOnlyAllowedFields(['uid', 'email', 'displayName', 'photoURL', 'role']) &&
+             data.uid is string && data.uid.size() > 0 && data.uid.size() < 100 &&
+             data.email is string && isValidEmail(data.email) && data.email.size() < 100 &&
+             (!('displayName' in data) || (data.displayName is string && data.displayName.size() < 100)) &&
+             (!('photoURL' in data) || (data.photoURL is string && data.photoURL.size() < 500)) &&
+             data.role in ['student', 'admin'];
+    }
+
+    function isValidChapterState(data) {
+      return hasOnlyAllowedFields(['student_id', 'subject', 'chapter', 'subtopics', 'current_subtopic_index', 'current_stage', 'mastery_level', 'history', 'content_cache', 'updatedAt']) &&
+             data.student_id is string && data.student_id.size() > 0 && data.student_id.size() < 100 &&
+             (!('subject' in data) || (data.subject is string && data.subject.size() > 0 && data.subject.size() < 100)) &&
+             data.chapter is string && data.chapter.size() > 0 && data.chapter.size() < 200 &&
+             data.subtopics is list && data.subtopics.size() <= 50 &&
+             data.current_subtopic_index is number && data.current_subtopic_index >= 0 &&
+             data.current_stage in ['INTRO', 'CONCEPT', 'GUIDED_PRACTICE', 'ADAPTIVE_PRACTICE', 'EXAM', 'ANALYSIS', 'REVISION'] &&
+             data.mastery_level is number && data.mastery_level >= 0 && data.mastery_level <= 100 &&
+             data.history is list && data.history.size() <= 1000 &&
+             (!('content_cache' in data) || data.content_cache is map) &&
+             data.updatedAt is string && data.updatedAt.size() > 0 && data.updatedAt.size() < 50;
+    }
+
+    function isValidTutorMessage(data) {
+      return hasOnlyAllowedFields(['student_id', 'role', 'text', 'timestamp']) &&
+             data.student_id is string && data.student_id.size() > 0 && data.student_id.size() < 100 &&
+             data.role in ['user', 'model'] &&
+             data.text is string && data.text.size() > 0 && data.text.size() < 10000 &&
+             data.timestamp is string && data.timestamp.size() > 0 && data.timestamp.size() < 50;
+    }
+
+    function isValidSyllabus(data) {
+      return hasOnlyAllowedFields(['subject', 'chapters', 'updatedAt']) &&
+             data.subject is string && data.subject.size() > 0 && data.subject.size() < 100 &&
+             data.chapters is list && data.chapters.size() <= 50 &&
+             data.updatedAt is string && data.updatedAt.size() > 0 && data.updatedAt.size() < 50;
+    }
+
+    function isValidLearningPath(data) {
+      return hasOnlyAllowedFields(['subject', 'chapter', 'pdf_url', 'is_generated', 'created_at']) &&
+             data.subject is string && data.subject.size() > 0 && data.subject.size() < 100 &&
+             data.chapter is string && data.chapter.size() > 0 && data.chapter.size() < 200 &&
+             data.pdf_url is string && data.pdf_url.size() > 0 && data.pdf_url.size() < 500 &&
+             data.is_generated is bool &&
+             data.created_at is string && data.created_at.size() > 0 && data.created_at.size() < 50;
+    }
+
+    function isValidPracticeTest(data) {
+      return hasOnlyAllowedFields(['subject', 'chapter', 'test_id', 'questions', 'created_at']) &&
+             data.subject is string && data.subject.size() > 0 && data.subject.size() < 100 &&
+             data.chapter is string && data.chapter.size() > 0 && data.chapter.size() < 200 &&
+             data.test_id is string && data.test_id.size() > 0 && data.test_id.size() < 100 &&
+             data.questions is list && data.questions.size() <= 100 &&
+             data.created_at is string && data.created_at.size() > 0 && data.created_at.size() < 50;
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isAuthenticated() && isValidUser(request.resource.data) && isOwner(userId) && uidUnchanged() && (request.resource.data.role == 'student' || isAdmin());
+      allow update: if isAuthenticated() && isValidUser(request.resource.data) && isOwner(userId) && uidNotModified() && (request.resource.data.role == resource.data.role || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    match /chapter_states/{stateId} {
+      allow read: if isAuthenticated() && (resource == null || resource.data.student_id == request.auth.uid) || isAdmin();
+      allow create: if isAuthenticated() && isValidChapterState(request.resource.data) && studentIdUnchanged();
+      allow update: if isAuthenticated() && isValidChapterState(request.resource.data) && studentIdNotModified() && isDocOwner();
+      allow delete: if isAdmin();
+    }
+
+    match /tutor_messages/{messageId} {
+      allow read: if isAuthenticated() && resource.data.student_id == request.auth.uid || isAdmin();
+      allow list: if isAuthenticated() && resource.data.student_id == request.auth.uid || isAdmin();
+      allow create: if isAuthenticated() && isValidTutorMessage(request.resource.data) && studentIdUnchanged();
+      allow update: if false; // Messages should be immutable
+      allow delete: if isAdmin();
+    }
+
+    // New Collections: Read-only for students, writable by admins (or system processes acting as admins)
+    // We allow authenticated users to create these documents if they don't exist yet (lazy generation)
+    match /syllabus/{subjectId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+      allow delete: if isAdmin();
+    }
+
+    match /learning_paths/{pathId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+      allow delete: if isAdmin();
+    }
+
+    match /practice_tests/{testId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+      allow delete: if isAdmin();
+    }
+  }
+}

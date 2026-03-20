@@ -1,0 +1,112 @@
+<svg width="850" height="550" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="850" height="550" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="425" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#2c3e50">Conversion of Solids & Applications</text>
+  
+  <!-- Sphere melted to Cylinder -->
+  <g transform="translate(50, 80)">
+    <text x="120" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Sphere → Cylinder</text>
+    
+    <!-- Sphere -->
+    <circle cx="60" cy="100" r="50" fill="#f9e79f" stroke="#f39c12" stroke-width="2"/>
+    <text x="60" y="165" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">Sphere</text>
+    <text x="115" y="105" font-family="Arial" font-size="11" fill="#f39c12">r</text>
+    
+    <!-- Arrow -->
+    <path d="M 130 100 L 170 100" stroke="#2c3e50" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <text x="150" y="90" text-anchor="middle" font-family="Arial" font-size="10" fill="#2c3e50">melt</text>
+    
+    <!-- Cylinder -->
+    <ellipse cx="240" cy="80" rx="40" ry="15" fill="#aed6f1" stroke="#2980b9" stroke-width="2"/>
+    <line x1="200" y1="80" x2="200" y2="140" stroke="#2980b9" stroke-width="2"/>
+    <line x1="280" y1="80" x2="280" y2="140" stroke="#2980b9" stroke-width="2"/>
+    <ellipse cx="240" cy="140" rx="40" ry="15" fill="#2980b9" opacity="0.3" stroke="#2980b9" stroke-width="2"/>
+    <text x="240" y="165" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">Cylinder</text>
+    
+    <text x="150" y="200" text-anchor="middle" font-family="Arial" font-size="11" fill="#16a085" font-weight="bold">Volume remains constant!</text>
+  </g>
+  
+  <!-- Multiple small spheres from large sphere -->
+  <g transform="translate(450, 80)">
+    <text x="150" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Large Sphere → Small Spheres</text>
+    
+    <!-- Large sphere -->
+    <circle cx="80" cy="100" r="50" fill="#e8daef" stroke="#8e44ad" stroke-width="2"/>
+    <text x="80" y="165" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">R = 6 cm</text>
+    
+    <!-- Arrow -->
+    <path d="M 150 100 L 190 100" stroke="#2c3e50" stroke-width="3"/>
+    <text x="170" y="90" text-anchor="middle" font-family="Arial" font-size="10" fill="#2c3e50">melt</text>
+    
+    <!-- Small spheres -->
+    <circle cx="220" cy="70" r="15" fill="#d7bde2" stroke="#8e44ad" stroke-width="2"/>
+    <circle cx="250" cy="100" r="15" fill="#d7bde2" stroke="#8e44ad" stroke-width="2"/>
+    <circle cx="220" cy="130" r="15" fill="#d7bde2" stroke="#8e44ad" stroke-width="2"/>
+    <circle cx="280" cy="80" r="15" fill="#d7bde2" stroke="#8e44ad" stroke-width="2"/>
+    <circle cx="280" cy="120" r="15" fill="#d7bde2" stroke="#8e44ad" stroke-width="2"/>
+    
+    <text x="250" y="165" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">r = 2 cm each</text>
+    <text x="250" y="185" text-anchor="middle" font-family="Arial" font-size="11" fill="#8e44ad" font-weight="bold">n = R³/r³ = 27</text>
+  </g>
+  
+  <!-- Well and Platform -->
+  <g transform="translate(50, 300)">
+    <text x="120" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Well Earth → Platform</text>
+    
+    <!-- Well (cylinder hole) -->
+    <ellipse cx="60" cy="120" rx="50" ry="15" fill="#85c1e9" stroke="#2980b9" stroke-width="2"/>
+    <path d="M 10 120 L 10 180 A 50 15 0 0 0 110 180 L 110 120" fill="#2980b9" opacity="0.3" stroke="#2980b9" stroke-width="2"/>
+    <text x="60" y="205" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">Well (cylinder)</text>
+    
+    <!-- Arrow -->
+    <path d="M 140 150 L 180 150" stroke="#2c3e50" stroke-width="3"/>
+    <text x="160" y="140" text-anchor="middle" font-family="Arial" font-size="10" fill="#2c3e50">earth</text>
+    
+    <!-- Platform (cuboid) -->
+    <path d="M 200 120 L 300 120 L 320 100 L 220 100 Z" fill="#f5b041" stroke="#d68910" stroke-width="2"/>
+    <path d="M 200 120 L 200 160 L 220 140 L 220 100" fill="none" stroke="#d68910" stroke-width="2"/>
+    <path d="M 300 120 L 300 160 L 320 140 L 320 100" fill="none" stroke="#d68910" stroke-width="2"/>
+    <path d="M 200 160 L 300 160 L 320 140 L 220 140 Z" fill="#d68910" opacity="0.3" stroke="#d68910" stroke-width="2"/>
+    <text x="250" y="190" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">Platform</text>
+    
+    <text x="150" y="220" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Volume of earth = Volume of platform</text>
+  </g>
+  
+  <!-- Wire Drawing -->
+  <g transform="translate(450, 300)">
+    <text x="150" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Sphere → Wire (Cylinder)</text>
+    
+    <!-- Sphere -->
+    <circle cx="80" cy="80" r="40" fill="#f5b041" stroke="#d68910" stroke-width="2"/>
+    <text x="80" y="135" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">Sphere</text>
+    
+    <!-- Arrow -->
+    <path d="M 140 80 L 180 80" stroke="#2c3e50" stroke-width="3"/>
+    <text x="160" y="70" text-anchor="middle" font-family="Arial" font-size="10" fill="#2c3e50">draw</text>
+    
+    <!-- Wire (long cylinder) -->
+    <ellipse cx="280" cy="70" rx="60" ry="10" fill="#d5f5e3" stroke="#27ae60" stroke-width="2"/>
+    <line x1="220" y1="70" x2="220" y2="90" stroke="#27ae60" stroke-width="2"/>
+    <line x1="340" y1="70" x2="340" y2="90" stroke="#27ae60" stroke-width="2"/>
+    <ellipse cx="280" cy="90" rx="60" ry="10" fill="#27ae60" opacity="0.3" stroke="#27ae60" stroke-width="2"/>
+    <text x="280" y="120" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">Wire (long cylinder)</text>
+    
+    <text x="150" y="145" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">V_sphere = V_wire</text>
+  </g>
+  
+  <!-- Definition Arrow -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/>
+    </marker>
+  </defs>
+  
+  <!-- Key Principle Box -->
+  <g transform="translate(200, 480)">
+    <rect x="0" y="0" width="450" height="60" fill="#fef9e7" stroke="#f39c12" stroke-width="2" rx="5"/>
+    <text x="225" y="25" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#d68910">Key Principle: Conversion of Solids</text>
+    <text x="225" y="48" text-anchor="middle" font-family="Arial" font-size="13" fill="#2c3e50">When a solid is melted and recast, its VOLUME remains CONSTANT</text>
+  </g>
+</svg>

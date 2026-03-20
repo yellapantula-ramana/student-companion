@@ -1,0 +1,116 @@
+<svg width="750" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="750" height="500" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="375" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#2c3e50">Tangent Properties</text>
+  
+  <!-- Tangent Perpendicular to Radius -->
+  <g transform="translate(50, 70)">
+    <text x="150" y="-10" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#2c3e50">Tangent ⊥ Radius</text>
+    
+    <!-- Circle -->
+    <circle cx="150" cy="120" r="80" fill="#ecf0f1" stroke="#3498db" stroke-width="2"/>
+    
+    <!-- Center -->
+    <circle cx="150" cy="120" r="4" fill="#e74c3c"/>
+    <text x="155" y="115" font-family="Arial" font-size="12" fill="#e74c3c">O</text>
+    
+    <!-- Radius -->
+    <line x1="150" y1="120" x2="150" y2="200" stroke="#2ecc71" stroke-width="3"/>
+    <text x="155" y="165" font-family="Arial" font-size="11" fill="#2ecc71">r</text>
+    
+    <!-- Tangent -->
+    <line x1="50" y1="200" x2="250" y2="200" stroke="#e74c3c" stroke-width="3"/>
+    <text x="200" y="215" font-family="Arial" font-size="12" fill="#e74c3c">Tangent</text>
+    
+    <!-- Point of Contact -->
+    <circle cx="150" cy="200" r="4" fill="#9b59b6"/>
+    <text x="155" y="215" font-family="Arial" font-size="11" fill="#9b59b6">P</text>
+    
+    <!-- Right Angle Symbol -->
+    <line x1="140" y1="190" x2="150" y2="190" stroke="#2c3e50" stroke-width="2"/>
+    <line x1="150" y1="190" x2="150" y2="200" stroke="#2c3e50" stroke-width="2"/>
+    <text x="125" y="185" font-family="Arial" font-size="12" fill="#2c3e50">90°</text>
+  </g>
+  
+  <!-- Tangents from External Point -->
+  <g transform="translate(350, 70)">
+    <text x="150" y="-10" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#2c3e50">Tangents from External Point</text>
+    
+    <!-- Circle -->
+    <circle cx="150" cy="150" r="70" fill="#ecf0f1" stroke="#3498db" stroke-width="2"/>
+    
+    <!-- Center -->
+    <circle cx="150" cy="150" r="4" fill="#e74c3c"/>
+    <text x="155" y="145" font-family="Arial" font-size="12" fill="#e74c3c">O</text>
+    
+    <!-- External Point -->
+    <circle cx="150" cy="30" r="4" fill="#f39c12"/>
+    <text x="155" y="25" font-family="Arial" font-size="12" fill="#f39c12">P</text>
+    
+    <!-- Tangents -->
+    <line x1="150" y1="30" x2="90" y2="100" stroke="#e74c3c" stroke-width="2"/>
+    <line x1="150" y1="30" x2="210" y2="100" stroke="#e74c3c" stroke-width="2"/>
+    
+    <!-- Points of Contact -->
+    <circle cx="90" cy="100" r="4" fill="#9b59b6"/>
+    <circle cx="210" cy="100" r="4" fill="#9b59b6"/>
+    <text x="75" y="115" font-family="Arial" font-size="11" fill="#9b59b6">A</text>
+    <text x="215" y="115" font-family="Arial" font-size="11" fill="#9b59b6">B</text>
+    
+    <!-- Radii -->
+    <line x1="150" y1="150" x2="90" y2="100" stroke="#2ecc71" stroke-width="2"/>
+    <line x1="150" y1="150" x2="210" y2="100" stroke="#2ecc71" stroke-width="2"/>
+    
+    <!-- Line OP -->
+    <line x1="150" y1="30" x2="150" y2="150" stroke="#95a5a6" stroke-width="2" stroke-dasharray="5,5"/>
+    
+    <!-- Equal marks -->
+    <text x="115" y="75" font-family="Arial" font-size="11" fill="#e74c3c">PA</text>
+    <text x="185" y="75" font-family="Arial" font-size="11" fill="#e74c3c">PB</text>
+    <text x="145" y="90" font-family="Arial" font-size="14" fill="#2ecc71">=</text>
+  </g>
+  
+  <!-- Number of Tangents -->
+  <g transform="translate(50, 300)">
+    <text x="200" y="-10" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#2c3e50">Number of Tangents</text>
+    
+    <!-- Point on Circle - 1 tangent -->
+    <g transform="translate(0, 20)">
+      <circle cx="80" cy="80" r="50" fill="#ecf0f1" stroke="#3498db" stroke-width="2"/>
+      <circle cx="80" cy="30" r="3" fill="#e74c3c"/>
+      <line x1="30" y1="30" x2="130" y2="30" stroke="#e74c3c" stroke-width="2"/>
+      <text x="80" y="15" font-family="Arial" font-size="11" fill="#2c3e50">1 tangent</text>
+    </g>
+    
+    <!-- External Point - 2 tangents -->
+    <g transform="translate(140, 20)">
+      <circle cx="80" cy="80" r="50" fill="#ecf0f1" stroke="#3498db" stroke-width="2"/>
+      <circle cx="80" cy="10" r="3" fill="#f39c12"/>
+      <line x1="80" y1="10" x2="45" y2="45" stroke="#e74c3c" stroke-width="2"/>
+      <line x1="80" y1="10" x2="115" y2="45" stroke="#e74c3c" stroke-width="2"/>
+      <text x="80" y="15" font-family="Arial" font-size="11" fill="#2c3e50">2 tangents</text>
+    </g>
+    
+    <!-- Internal Point - 0 tangents -->
+    <g transform="translate(280, 20)">
+      <circle cx="80" cy="80" r="50" fill="#ecf0f1" stroke="#3498db" stroke-width="2"/>
+      <circle cx="80" cy="70" r="3" fill="#9b59b6"/>
+      <line x1="50" y1="80" x2="110" y2="80" stroke="#95a5a6" stroke-width="2"/>
+      <text x="80" y="15" font-family="Arial" font-size="11" fill="#2c3e50">0 tangents</text>
+    </g>
+  </g>
+  
+  <!-- Properties Box -->
+  <g transform="translate(450, 300)">
+    <rect x="0" y="0" width="280" height="180" fill="#f8f9fa" stroke="#bdc3c7" stroke-width="1" rx="5"/>
+    <text x="140" y="25" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Key Properties</text>
+    
+    <text x="15" y="50" font-family="Arial" font-size="12" fill="#2c3e50">1. Tangent ⊥ Radius at contact</text>
+    <text x="15" y="75" font-family="Arial" font-size="12" fill="#2c3e50">2. PA = PB (tangents from P)</text>
+    <text x="15" y="100" font-family="Arial" font-size="12" fill="#2c3e50">3. OP bisects ∠APB</text>
+    <text x="15" y="125" font-family="Arial" font-size="12" fill="#2c3e50">4. ∠OAP = ∠OBP = 90°</text>
+    <text x="15" y="150" font-family="Arial" font-size="12" fill="#2c3e50">5. ΔOAP ≅ ΔOBP</text>
+  </g>
+</svg>

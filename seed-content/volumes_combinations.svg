@@ -1,0 +1,125 @@
+<svg width="850" height="550" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="850" height="550" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="425" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#2c3e50">Combination of Solids</text>
+  
+  <!-- Cone on Hemisphere (Toy) -->
+  <g transform="translate(80, 80)">
+    <text x="100" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Cone on Hemisphere</text>
+    
+    <!-- Hemisphere -->
+    <path d="M 20 180 A 80 80 0 0 1 180 180 Z" fill="#abebc6" stroke="#27ae60" stroke-width="2"/>
+    
+    <!-- Cone -->
+    <path d="M 20 180 L 100 60 L 180 180 Z" fill="#f9e79f" stroke="#f39c12" stroke-width="2"/>
+    
+    <!-- Dimensions -->
+    <text x="110" y="120" font-family="Arial" font-size="11" fill="#2c3e50">h</text>
+    <line x1="100" y1="60" x2="100" y2="180" stroke="#2c3e50" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="190" y="185" font-family="Arial" font-size="11" fill="#2c3e50">r</text>
+    
+    <text x="100" y="220" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">V = V_cone + V_hemisphere</text>
+    <text x="100" y="235" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Example: Toy, ice cream</text>
+  </g>
+  
+  <!-- Cylinder with Hemispherical Ends (Capsule) -->
+  <g transform="translate(350, 80)">
+    <text x="100" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Capsule (Cylinder + 2 Hemispheres)</text>
+    
+    <!-- Left Hemisphere -->
+    <path d="M 60 140 A 40 40 0 0 0 60 220 L 60 140" fill="#aed6f1" stroke="#2980b9" stroke-width="2"/>
+    
+    <!-- Cylinder -->
+    <rect x="60" y="140" width="80" height="80" fill="#d6eaf8" stroke="#2980b9" stroke-width="2"/>
+    
+    <!-- Right Hemisphere -->
+    <path d="M 140 140 A 40 40 0 0 1 140 220 L 140 140" fill="#aed6f1" stroke="#2980b9" stroke-width="2"/>
+    
+    <!-- Dimensions -->
+    <text x="95" y="135" font-family="Arial" font-size="11" fill="#2c3e50">r</text>
+    <text x="100" y="190" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">h (cylinder)</text>
+    
+    <text x="100" y="250" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">V = V_cyl + 2×V_hemi</text>
+    <text x="100" y="265" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Example: Pill, capsule</text>
+  </g>
+  
+  <!-- Cylinder with Cone on Top (Tent) -->
+  <g transform="translate(620, 80)">
+    <text x="100" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Tent (Cylinder + Cone)</text>
+    
+    <!-- Cylinder -->
+    <path d="M 40 140 L 40 220 A 60 20 0 0 0 160 220 L 160 140" fill="#f5b041" stroke="#d68910" stroke-width="2"/>
+    <ellipse cx="100" cy="140" rx="60" ry="20" fill="#f9e79f" stroke="#d68910" stroke-width="2"/>
+    
+    <!-- Cone -->
+    <path d="M 40 140 L 100 60 L 160 140" fill="#f5cba7" stroke="#d68910" stroke-width="2"/>
+    
+    <!-- Dimensions -->
+    <line x1="100" y1="60" x2="100" y2="140" stroke="#2c3e50" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="110" y="100" font-family="Arial" font-size="11" fill="#2c3e50">h₁</text>
+    <line x1="100" y1="140" x2="100" y2="220" stroke="#2c3e50" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="110" y="180" font-family="Arial" font-size="11" fill="#2c3e50">h₂</text>
+    <text x="170" y="190" font-family="Arial" font-size="11" fill="#2c3e50">r</text>
+    
+    <text x="100" y="260" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">V = V_cyl + V_cone</text>
+    <text x="100" y="275" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Example: Tent, silo</text>
+  </g>
+  
+  <!-- Cube with Hemisphere on Top -->
+  <g transform="translate(80, 350)">
+    <text x="100" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Cube with Hemisphere</text>
+    
+    <!-- Cube -->
+    <path d="M 40 140 L 160 140 L 180 120 L 60 120 Z" fill="#e8daef" stroke="#8e44ad" stroke-width="2"/>
+    <path d="M 40 140 L 40 220 L 60 200 L 60 120" fill="none" stroke="#8e44ad" stroke-width="2"/>
+    <path d="M 160 140 L 160 220 L 180 200 L 180 120" fill="none" stroke="#8e44ad" stroke-width="2"/>
+    <path d="M 40 220 L 160 220 L 180 200 L 60 200 Z" fill="#8e44ad" opacity="0.3" stroke="#8e44ad" stroke-width="2"/>
+    
+    <!-- Hemisphere -->
+    <path d="M 60 140 A 60 60 0 0 1 140 140" fill="#d7bde2" stroke="#8e44ad" stroke-width="2"/>
+    
+    <text x="100" y="250" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">V = V_cube + V_hemisphere</text>
+    <text x="100" y="265" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Example: Decorative item</text>
+  </g>
+  
+  <!-- Hollow Cylinder (Pipe) -->
+  <g transform="translate(350, 350)">
+    <text x="100" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Hollow Cylinder (Pipe)</text>
+    
+    <!-- Outer cylinder -->
+    <ellipse cx="100" cy="140" rx="80" ry="25" fill="#d5f5e3" stroke="#27ae60" stroke-width="2"/>
+    <ellipse cx="100" cy="220" rx="80" ry="25" fill="#27ae60" opacity="0.3" stroke="#27ae60" stroke-width="2"/>
+    <line x1="20" y1="140" x2="20" y2="220" stroke="#27ae60" stroke-width="2"/>
+    <line x1="180" y1="140" x2="180" y2="220" stroke="#27ae60" stroke-width="2"/>
+    
+    <!-- Inner hole -->
+    <ellipse cx="100" cy="140" rx="50" ry="15" fill="#ffffff" stroke="#27ae60" stroke-width="2"/>
+    <ellipse cx="100" cy="220" rx="50" ry="15" fill="#ffffff" stroke="#27ae60" stroke-width="2"/>
+    
+    <!-- Dimensions -->
+    <text x="190" y="150" font-family="Arial" font-size="11" fill="#2c3e50">R</text>
+    <text x="160" y="160" font-family="Arial" font-size="11" fill="#2c3e50">r</text>
+    
+    <text x="100" y="260" text-anchor="middle" font-family="Arial" font-size="11" fill="#2c3e50">V = π(R² - r²)h</text>
+    <text x="100" y="275" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Example: Pipe, tube</text>
+  </g>
+  
+  <!-- Frustum of Cone -->
+  <g transform="translate(620, 350)">
+    <text x="100" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Frustum of Cone</text>
+    
+    <!-- Frustum -->
+    <path d="M 60 140 L 40 220 A 60 20 0 0 0 160 220 L 140 140" fill="#f5b041" stroke="#d68910" stroke-width="2"/>
+    <ellipse cx="100" cy="140" rx="40" ry="15" fill="#f9e79f" stroke="#d68910" stroke-width="2"/>
+    
+    <!-- Dimensions -->
+    <text x="30" y="180" font-family="Arial" font-size="11" fill="#2c3e50">h</text>
+    <text x="170" y="150" font-family="Arial" font-size="11" fill="#2c3e50">R</text>
+    <text x="150" y="230" font-family="Arial" font-size="11" fill="#2c3e50">r</text>
+    
+    <text x="100" y="260" text-anchor="middle" font-family="Arial" font-size="10" fill="#2c3e50">V = (1/3)πh(R² + r² + Rr)</text>
+    <text x="100" y="275" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Example: Glass, bucket</text>
+  </g>
+</svg>

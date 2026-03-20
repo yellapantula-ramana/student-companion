@@ -1,0 +1,12 @@
+ingress:
+  # API routes - MUST come first (more specific)
+  - hostname: facilities-profiles-images-difficulty.trycloudflare.com
+    path: /api/*
+    service: http://localhost:3002
+  
+  # Frontend - serves everything else
+  - hostname: facilities-profiles-images-difficulty.trycloudflare.com
+    service: http://localhost:3000
+  
+  # Catch-all (fallback)
+  - service: http://localhost:3000

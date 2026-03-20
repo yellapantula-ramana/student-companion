@@ -1,0 +1,140 @@
+<svg width="700" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="700" height="400" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="350" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#2c3e50">Applications: Moving Objects & Special Cases</text>
+  
+  <!-- Scenario 1: Moving Car/Ship -->
+  <g transform="translate(30, 60)">
+    <text x="150" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Moving Object (Car/Ship)</text>
+    
+    <!-- Tower -->
+    <rect x="20" y="30" width="25" height="120" fill="#3498db" opacity="0.4" stroke="#3498db" stroke-width="2"/>
+    <text x="22" y="90" font-family="Arial" font-size="10" fill="#2c3e50">Tower</text>
+    
+    <!-- Observer on top -->
+    <circle cx="32" cy="30" r="4" fill="#e74c3c"/>
+    
+    <!-- Horizontal from top -->
+    <line x1="32" y1="30" x2="300" y2="30" stroke="#2ecc71" stroke-width="1"/>
+    
+    <!-- Car position 1 -->
+    <circle cx="250" cy="150" r="5" fill="#9b59b6"/>
+    <text x="235" y="165" font-family="Arial" font-size="10" fill="#9b59b6">Car (30°)</text>
+    
+    <!-- Car position 2 -->
+    <circle cx="180" cy="150" r="5" fill="#f39c12"/>
+    <text x="165" y="165" font-family="Arial" font-size="10" fill="#f39c12">Car (45°)</text>
+    
+    <!-- Lines of sight -->
+    <line x1="32" y1="30" x2="250" y2="150" stroke="#9b59b6" stroke-width="2" stroke-dasharray="5,5"/>
+    <line x1="32" y1="30" x2="180" y2="150" stroke="#f39c12" stroke-width="2" stroke-dasharray="5,5"/>
+    
+    <!-- Ground -->
+    <line x1="0" y1="150" x2="300" y2="150" stroke="#2ecc71" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="10" y="90" font-family="Arial" font-size="10" fill="#3498db">h</text>
+    <text x="190" y="140" font-family="Arial" font-size="9" fill="#e74c3c">Moving →</text>
+  </g>
+  
+  <!-- Scenario 2: Cloud and Reflection -->
+  <g transform="translate(350, 60)">
+    <text x="150" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Cloud and Reflection</text>
+    
+    <!-- Lake surface -->
+    <line x1="0" y1="100" x2="300" y2="100" stroke="#3498db" stroke-width="3"/>
+    <text x="240" y="95" font-family="Arial" font-size="10" fill="#3498db">Lake</text>
+    
+    <!-- Cloud -->
+    <ellipse cx="150" cy="30" rx="40" ry="20" fill="#ecf0f1" stroke="#95a5a6" stroke-width="1"/>
+    <text x="135" y="35" font-family="Arial" font-size="10" fill="#2c3e50">Cloud</text>
+    
+    <!-- Reflection -->
+    <ellipse cx="150" cy="170" rx="40" ry="20" fill="#ecf0f1" stroke="#95a5a6" stroke-width="1" opacity="0.5"/>
+    <text x="130" y="175" font-family="Arial" font-size="10" fill="#2c3e50">Reflection</text>
+    
+    <!-- Observer -->
+    <circle cx="50" cy="80" r="4" fill="#e74c3c"/>
+    <text x="35" y="75" font-family="Arial" font-size="9" fill="#e74c3c">Observer</text>
+    
+    <!-- Horizontal from observer -->
+    <line x1="50" y1="80" x2="200" y2="80" stroke="#2ecc71" stroke-width="1"/>
+    
+    <!-- Lines of sight -->
+    <line x1="50" y1="80" x2="150" y2="30" stroke="#9b59b6" stroke-width="2" stroke-dasharray="5,5"/>
+    <line x1="50" y1="80" x2="150" y2="170" stroke="#f39c12" stroke-width="2" stroke-dasharray="5,5"/>
+    
+    <!-- Angles -->
+    <text x="90" y="65" font-family="Arial" font-size="9" fill="#9b59b6">α (elevation)</text>
+    <text x="90" y="130" font-family="Arial" font-size="9" fill="#f39c12">β (depression)</text>
+    
+    <!-- Height labels -->
+    <text x="200" y="55" font-family="Arial" font-size="10" fill="#3498db">Cloud height</text>
+    <text x="200" y="75" font-family="Arial" font-size="10" fill="#e74c3c">Observer height h</text>
+  </g>
+  
+  <!-- Scenario 3: River Width -->
+  <g transform="translate(30, 240)">
+    <text x="150" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">River Width</text>
+    
+    <!-- River banks -->
+    <line x1="0" y1="80" x2="300" y2="80" stroke="#3498db" stroke-width="2"/>
+    <line x1="0" y1="140" x2="300" y2="140" stroke="#3498db" stroke-width="2"/>
+    
+    <!-- Water -->
+    <rect x="0" y="80" width="300" height="60" fill="#3498db" opacity="0.1"/>
+    <text x="120" y="115" font-family="Arial" font-size="11" fill="#3498db">River</text>
+    
+    <!-- Bridge/Point -->
+    <rect x="140" y="50" width="20" height="30" fill="#9b59b6" opacity="0.5" stroke="#9b59b6" stroke-width="1"/>
+    <text x="135" y="45" font-family="Arial" font-size="10" fill="#9b59b6">Bridge</text>
+    
+    <!-- Observer on bridge -->
+    <circle cx="150" cy="50" r="4" fill="#e74c3c"/>
+    
+    <!-- Lines to banks -->
+    <line x1="150" y1="50" x2="50" y2="80" stroke="#f39c12" stroke-width="2" stroke-dasharray="5,5"/>
+    <line x1="150" y1="50" x2="250" y2="80" stroke="#2ecc71" stroke-width="2" stroke-dasharray="5,5"/>
+    
+    <!-- Vertical from bridge -->
+    <line x1="150" y1="50" x2="150" y2="80" stroke="#95a5a6" stroke-width="2"/>
+    <text x="155" y="70" font-family="Arial" font-size="9" fill="#95a5a6">3m</text>
+    
+    <!-- Angles -->
+    <text x="80" y="75" font-family="Arial" font-size="10" fill="#f39c12">30°</text>
+    <text x="200" y="75" font-family="Arial" font-size="10" fill="#2ecc71">45°</text>
+    
+    <!-- Width label -->
+    <text x="130" y="155" font-family="Arial" font-size="11" fill="#2c3e50">Width = ?</text>
+  </g>
+  
+  <!-- Scenario 4: Kite Problem -->
+  <g transform="translate(350, 240)">
+    <text x="150" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Kite Problem</text>
+    
+    <!-- Ground -->
+    <line x1="0" y1="140" x2="300" y2="140" stroke="#2ecc71" stroke-width="2"/>
+    
+    <!-- Kite -->
+    <polygon points="150,30 160,45 150,60 140,45" fill="#e74c3c" opacity="0.7"/>
+    <text x="165" y="50" font-family="Arial" font-size="10" fill="#e74c3c">Kite</text>
+    
+    <!-- String -->
+    <line x1="150" y1="45" x2="50" y2="140" stroke="#9b59b6" stroke-width="2"/>
+    <text x="80" y="100" font-family="Arial" font-size="10" fill="#9b59b6">String (l)</text>
+    
+    <!-- Person -->
+    <circle cx="50" cy="140" r="4" fill="#3498db"/>
+    <text x="35" y="155" font-family="Arial" font-size="10" fill="#3498db">Person</text>
+    
+    <!-- Height line -->
+    <line x1="150" y1="45" x2="150" y2="140" stroke="#2ecc71" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="155" y="95" font-family="Arial" font-size="10" fill="#2ecc71">60m</text>
+    
+    <!-- Angle -->
+    <path d="M 70 140 A 20 20 0 0 0 65 125" fill="none" stroke="#f39c12" stroke-width="2"/>
+    <text x="65" y="120" font-family="Arial" font-size="10" fill="#f39c12">60°</text>
+  </g>
+</svg>
