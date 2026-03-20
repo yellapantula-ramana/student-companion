@@ -41,7 +41,7 @@ export async function getOrGenerateSyllabus(subject: string) {
   const subjectId = makeId(subject);
 
   try {
-    const response = await fetch(`${API_BASE_URL}/syllabus/${subjectId}`);
+    const response = await fetch(`${API_BASE_URL}/syllabus?id=${subjectId}`);
     if (response.ok) {
       return await response.json();
     }
@@ -105,7 +105,7 @@ export async function getOrGenerateLearningPath(
   const pathId = `${makeId(subject)}_${makeId(chapter)}`;
 
   try {
-    const response = await fetch(`${API_BASE_URL}/learning-paths/${pathId}`);
+    const response = await fetch(`${API_BASE_URL}/learning-paths?id=${pathId}`);
     if (response.ok) {
       const data = await response.json();
       if (data.is_generated && data.content) {

@@ -7,8 +7,28 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/[[...path]]"
+      "source": "/api/health",
+      "destination": "/api/health.ts"
+    },
+    {
+      "source": "/api/auth/register",
+      "destination": "/api/auth/register.ts"
+    },
+    {
+      "source": "/api/auth/login",
+      "destination": "/api/auth/login.ts"
+    },
+    {
+      "source": "/api/syllabus",
+      "destination": "/api/syllabus.ts"
+    },
+    {
+      "source": "/api/learning-paths",
+      "destination": "/api/learning-paths.ts"
+    },
+    {
+      "source": "/api/practice-tests",
+      "destination": "/api/practice-tests.ts"
     },
     {
       "source": "/(.*)",
@@ -19,8 +39,5 @@
     "api/**/*.ts": {
       "maxDuration": 10
     }
-  },
-  "env": {
-    "NODE_ENV": "production"
   }
 }
