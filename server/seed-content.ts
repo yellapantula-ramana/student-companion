@@ -337,6 +337,303 @@ async function seedLearningPaths() {
       console.log('⚠️ Science markdown file not found, skipping science learning path seed');
     }
 
+    // Seed Science: Acids, Bases and Salts
+    const science02MdPath = path.join(__dirname, '..', 'seed-content', 'science_02_acids_bases_salts.md');
+
+    if (fs.existsSync(science02MdPath)) {
+      const science02Content = fs.readFileSync(science02MdPath, 'utf-8').trim();
+
+      await query(
+        `INSERT INTO learning_paths (id, subject, chapter, content, pdf_url, is_generated)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (id) DO UPDATE SET
+           content = $4,
+           is_generated = $6,
+           created_at = CURRENT_TIMESTAMP`,
+        [
+          'science_acids_bases_salts',
+          'Science',
+          'Acids, Bases and Salts',
+          science02Content,
+          '',
+          true
+        ]
+      );
+      console.log('✅ Seeded learning path: Acids, Bases and Salts');
+    } else {
+      console.log('⚠️ Science 02 markdown file not found, skipping acids bases salts learning path seed');
+    }
+
+    // Seed Science: Metals and Non-metals
+    const science3MdPath = path.join(__dirname, '..', 'seed-content', 'science_03_metals_and_non_metals.md');
+
+    if (fs.existsSync(science3MdPath)) {
+      const science3Content = fs.readFileSync(science3MdPath, 'utf-8');
+
+      await query(
+        `INSERT INTO learning_paths (id, subject, chapter, content, pdf_url, is_generated)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (id) DO UPDATE SET
+           content = $4,
+           is_generated = $6,
+           created_at = CURRENT_TIMESTAMP`,
+        [
+          'science_metals_and_non_metals',
+          'Science',
+          'Metals and Non-metals',
+          science3Content,
+          '',
+          true
+        ]
+      );
+      console.log('✅ Seeded learning path: Metals and Non-metals');
+    } else {
+      console.log('⚠️ Science 03 markdown file not found, skipping metals and non-metals learning path seed');
+    }
+
+    // Seed Science: Carbon and its Compounds
+    const science4MdPath = path.join(__dirname, '..', 'seed-content', 'science_04_carbon_and_its_compounds.md');
+
+    if (fs.existsSync(science4MdPath)) {
+      const science4Content = fs.readFileSync(science4MdPath, 'utf-8');
+
+      await query(
+        `INSERT INTO learning_paths (id, subject, chapter, content, pdf_url, is_generated)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (id) DO UPDATE SET
+           content = $4,
+           is_generated = $6,
+           created_at = CURRENT_TIMESTAMP`,
+        [
+          'science_carbon_and_its_compounds',
+          'Science',
+          'Carbon and its Compounds',
+          science4Content,
+          '',
+          true
+        ]
+      );
+      console.log('✅ Seeded learning path: Carbon and its Compounds');
+    } else {
+      console.log('⚠️ Science 04 markdown file not found, skipping carbon and its compounds learning path seed');
+    }
+
+    // Seed Science: Life Processes
+    const science5MdPath = path.join(__dirname, '..', 'seed-content', 'science_05_life_processes.md');
+
+    if (fs.existsSync(science5MdPath)) {
+      const science5Content = fs.readFileSync(science5MdPath, 'utf-8');
+
+      await query(
+        `INSERT INTO learning_paths (id, subject, chapter, content, pdf_url, is_generated)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (id) DO UPDATE SET
+           content = $4,
+           is_generated = $6,
+           created_at = CURRENT_TIMESTAMP`,
+        [
+          'science_life_processes',
+          'Science',
+          'Life Processes',
+          science5Content,
+          '',
+          true
+        ]
+      );
+      console.log('✅ Seeded learning path: Life Processes');
+    } else {
+      console.log('⚠️ Science 05 markdown file not found, skipping life processes learning path seed');
+    }
+
+    // Seed Science: Control and Coordination
+    const science6MdPath = path.join(__dirname, '..', 'seed-content', 'science_06_control_and_coordination.md');
+
+    if (fs.existsSync(science6MdPath)) {
+      const science6Content = fs.readFileSync(science6MdPath, 'utf-8');
+
+      await query(
+        `INSERT INTO learning_paths (id, subject, chapter, content, pdf_url, is_generated)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (id) DO UPDATE SET
+           content = $4,
+           is_generated = $6,
+           created_at = CURRENT_TIMESTAMP`,
+        [
+          'science_control_and_coordination',
+          'Science',
+          'Control and Coordination',
+          science6Content,
+          '',
+          true
+        ]
+      );
+      console.log('✅ Seeded learning path: Control and Coordination');
+    } else {
+      console.log('⚠️ Science 06 markdown file not found, skipping control and coordination learning path seed');
+    }
+
+    // Seed Science: How do Organisms Reproduce
+    const science7MdPath = path.join(__dirname, '..', 'seed-content', 'science_07_how_do_organisms_reproduce.md');
+
+    if (fs.existsSync(science7MdPath)) {
+      const science7Content = fs.readFileSync(science7MdPath, 'utf-8');
+
+      await query(
+        `INSERT INTO learning_paths (id, subject, chapter, content, pdf_url, is_generated)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (id) DO UPDATE SET
+           content = $4,
+           is_generated = $6,
+           created_at = CURRENT_TIMESTAMP`,
+        [
+          'science_how_do_organisms_reproduce',
+          'Science',
+          'How do Organisms Reproduce',
+          science7Content,
+          '',
+          true
+        ]
+      );
+      console.log('✅ Seeded learning path: How do Organisms Reproduce');
+    } else {
+      console.log('⚠️ Science 07 markdown file not found, skipping how do organisms reproduce learning path seed');
+    }
+
+    // Seed Science: Heredity and Evolution
+    const science8MdPath = path.join(__dirname, '..', 'seed-content', 'science_08_heredity_and_evolution.md');
+
+    if (fs.existsSync(science8MdPath)) {
+      const science8Content = fs.readFileSync(science8MdPath, 'utf-8');
+
+      await query(
+        `INSERT INTO learning_paths (id, subject, chapter, content, pdf_url, is_generated)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (id) DO UPDATE SET
+           content = $4,
+           is_generated = $6,
+           created_at = CURRENT_TIMESTAMP`,
+        [
+          'science_heredity_and_evolution',
+          'Science',
+          'Heredity and Evolution',
+          science8Content,
+          '',
+          true
+        ]
+      );
+      console.log('✅ Seeded learning path: Heredity and Evolution');
+    } else {
+      console.log('⚠️ Science 08 markdown file not found, skipping heredity and evolution learning path seed');
+    }
+
+    // Seed Science: Light - Reflection and Refraction
+    const science9MdPath = path.join(__dirname, '..', 'seed-content', 'science_09_light_reflection_and_refraction.md');
+
+    if (fs.existsSync(science9MdPath)) {
+      const science9Content = fs.readFileSync(science9MdPath, 'utf-8');
+
+      await query(
+        `INSERT INTO learning_paths (id, subject, chapter, content, pdf_url, is_generated)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (id) DO UPDATE SET
+           content = $4,
+           is_generated = $6,
+           created_at = CURRENT_TIMESTAMP`,
+        [
+          'science_light_reflection_and_refraction',
+          'Science',
+          'Light - Reflection and Refraction',
+          science9Content,
+          '',
+          true
+        ]
+      );
+      console.log('✅ Seeded learning path: Light - Reflection and Refraction');
+    } else {
+      console.log('⚠️ Science 09 markdown file not found, skipping light reflection and refraction learning path seed');
+    }
+
+    // Seed Science: The Human Eye and the Colourful World
+    const science10MdPath = path.join(__dirname, '..', 'seed-content', 'science_10_human_eye_and_colourful_world.md');
+
+    if (fs.existsSync(science10MdPath)) {
+      const science10Content = fs.readFileSync(science10MdPath, 'utf-8');
+
+      await query(
+        `INSERT INTO learning_paths (id, subject, chapter, content, pdf_url, is_generated)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (id) DO UPDATE SET
+           content = $4,
+           is_generated = $6,
+           created_at = CURRENT_TIMESTAMP`,
+        [
+          'science_human_eye_and_colourful_world',
+          'Science',
+          'The Human Eye and the Colourful World',
+          science10Content,
+          '',
+          true
+        ]
+      );
+      console.log('✅ Seeded learning path: The Human Eye and the Colourful World');
+    } else {
+      console.log('⚠️ Science 10 markdown file not found, skipping human eye learning path seed');
+    }
+
+    // Seed Science: Electricity
+    const science11MdPath = path.join(__dirname, '..', 'seed-content', 'science_11_electricity.md');
+
+    if (fs.existsSync(science11MdPath)) {
+      const science11Content = fs.readFileSync(science11MdPath, 'utf-8');
+
+      await query(
+        `INSERT INTO learning_paths (id, subject, chapter, content, pdf_url, is_generated)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (id) DO UPDATE SET
+           content = $4,
+           is_generated = $6,
+           created_at = CURRENT_TIMESTAMP`,
+        [
+          'science_electricity',
+          'Science',
+          'Electricity',
+          science11Content,
+          '',
+          true
+        ]
+      );
+      console.log('✅ Seeded learning path: Electricity');
+    } else {
+      console.log('⚠️ Science 11 markdown file not found, skipping electricity learning path seed');
+    }
+
+    // Seed Science: Magnetic Effects of Electric Current (Chapter 12)
+    const science12MdPath = path.join(__dirname, '..', 'seed-content', 'science_12_magnetic_effects_electric_current.md');
+
+    if (fs.existsSync(science12MdPath)) {
+      const science12Content = fs.readFileSync(science12MdPath, 'utf-8');
+
+      await query(
+        `INSERT INTO learning_paths (id, subject, chapter, content, pdf_url, is_generated)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (id) DO UPDATE SET
+           content = $4,
+           is_generated = $6,
+           created_at = CURRENT_TIMESTAMP`,
+        [
+          'science_magnetic_effects_of_electric_current',
+          'Science',
+          'Magnetic Effects of Electric Current',
+          science12Content,
+          '',
+          true
+        ]
+      );
+      console.log('✅ Seeded learning path: Magnetic Effects of Electric Current');
+    } else {
+      console.log('⚠️ Science 12 markdown file not found, skipping magnetic effects learning path seed');
+    }
+
     // Seed Mathematics: Real Numbers
     const mathMdPath = path.join(__dirname, '..', 'seed-content', 'mathematics_01_real_numbers.md');
 

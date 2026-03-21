@@ -1,0 +1,134 @@
+<svg width="850" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="850" height="500" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="425" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#2c3e50">Acid-Base Indicators</text>
+  
+  <!-- Test tubes setup -->
+  <g transform="translate(50, 80)">
+    <text x="150" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Natural Indicators</text>
+    
+    <!-- Test tube 1 - Litmus in acid -->
+    <g transform="translate(20, 20)">
+      <path d="M 10 10 L 10 80 L 30 80 L 30 10" fill="none" stroke="#333" stroke-width="2"/>
+      <rect x="10" y="50" width="20" height="30" fill="#ff6b6b"/>
+      <text x="20" y="105" text-anchor="middle" font-family="Arial" font-size="9">Litmus</text>
+      <text x="20" y="115" text-anchor="middle" font-family="Arial" font-size="9" fill="#c0392b">Acid: Red</text>
+    </g>
+    
+    <!-- Test tube 2 - Litmus in base -->
+    <g transform="translate(70, 20)">
+      <path d="M 10 10 L 10 80 L 30 80 L 30 10" fill="none" stroke="#333" stroke-width="2"/>
+      <rect x="10" y="50" width="20" height="30" fill="#4ecdc4"/>
+      <text x="20" y="105" text-anchor="middle" font-family="Arial" font-size="9">Litmus</text>
+      <text x="20" y="115" text-anchor="middle" font-family="Arial" font-size="9" fill="#16a085">Base: Blue</text>
+    </g>
+    
+    <!-- Test tube 3 - Phenolphthalein in acid -->
+    <g transform="translate(120, 20)">
+      <path d="M 10 10 L 10 80 L 30 80 L 30 10" fill="none" stroke="#333" stroke-width="2"/>
+      <rect x="10" y="50" width="20" height="30" fill="#f8f9fa"/>
+      <text x="20" y="105" text-anchor="middle" font-family="Arial" font-size="9">Phenolph.</text>
+      <text x="20" y="115" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">Acid: Clear</text>
+    </g>
+    
+    <!-- Test tube 4 - Phenolphthalein in base -->
+    <g transform="translate(170, 20)">
+      <path d="M 10 10 L 10 80 L 30 80 L 30 10" fill="none" stroke="#333" stroke-width="2"/>
+      <rect x="10" y="50" width="20" height="30" fill="#ff69b4"/>
+      <text x="20" y="105" text-anchor="middle" font-family="Arial" font-size="9">Phenolph.</text>
+      <text x="20" y="115" text-anchor="middle" font-family="Arial" font-size="9" fill="#c71585">Base: Pink</text>
+    </g>
+    
+    <!-- Test tube 5 - Methyl orange in acid -->
+    <g transform="translate(220, 20)">
+      <path d="M 10 10 L 10 80 L 30 80 L 30 10" fill="none" stroke="#333" stroke-width="2"/>
+      <rect x="10" y="50" width="20" height="30" fill="#ff4500"/>
+      <text x="20" y="105" text-anchor="middle" font-family="Arial" font-size="9">Methyl Org.</text>
+      <text x="20" y="115" text-anchor="middle" font-family="Arial" font-size="9" fill="#c0392b">Acid: Red</text>
+    </g>
+    
+    <!-- Test tube 6 - Methyl orange in base -->
+    <g transform="translate(270, 20)">
+      <path d="M 10 10 L 10 80 L 30 80 L 30 10" fill="none" stroke="#333" stroke-width="2"/>
+      <rect x="10" y="50" width="20" height="30" fill="#ffd700"/>
+      <text x="20" y="105" text-anchor="middle" font-family="Arial" font-size="9">Methyl Org.</text>
+      <text x="20" y="115" text-anchor="middle" font-family="Arial" font-size="9" fill="#b8860b">Base: Yellow</text>
+    </g>
+  </g>
+  
+  <!-- Natural indicators images -->
+  <g transform="translate(50, 280)">
+    <text x="150" y="-10" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2c3e50">Common Natural Indicators</text>
+    
+    <!-- Lemon -->
+    <g transform="translate(20, 20)">
+      <ellipse cx="30" cy="30" rx="25" ry="20" fill="#ffd700" stroke="#daa520" stroke-width="2"/>
+      <text x="30" y="65" text-anchor="middle" font-family="Arial" font-size="10">Lemon</text>
+      <text x="30" y="78" text-anchor="middle" font-family="Arial" font-size="9" fill="#c0392b">Citric Acid</text>
+    </g>
+    
+    <!-- Turmeric -->
+    <g transform="translate(90, 20)">
+      <ellipse cx="30" cy="30" rx="20" ry="25" fill="#ffa500" stroke="#cc8400" stroke-width="2"/>
+      <text x="30" y="65" text-anchor="middle" font-family="Arial" font-size="10">Turmeric</text>
+      <text x="30" y="78" text-anchor="middle" font-family="Arial" font-size="9" fill="#b8860b">Yellow→Brown</text>
+    </g>
+    
+    <!-- Red cabbage -->
+    <g transform="translate(160, 20)">
+      <circle cx="30" cy="30" r="25" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+      <text x="30" y="65" text-anchor="middle" font-family="Arial" font-size="10">Red Cabbage</text>
+      <text x="30" y="78" text-anchor="middle" font-family="Arial" font-size="9" fill="#8e44ad">Red→Green</text>
+    </g>
+    
+    <!-- China rose -->
+    <g transform="translate(230, 20)">
+      <circle cx="30" cy="30" r="20" fill="#ff69b4" stroke="#c71585" stroke-width="2"/>
+      <text x="30" y="65" text-anchor="middle" font-family="Arial" font-size="10">China Rose</text>
+      <text x="30" y="78" text-anchor="middle" font-family="Arial" font-size="9" fill="#c71585">Pink→Green</text>
+    </g>
+  </g>
+  
+  <!-- Summary table -->
+  <g transform="translate(520, 80)">
+    <rect x="0" y="0" width="310" height="280" fill="#fef9e7" stroke="#f39c12" stroke-width="1" rx="5"/>
+    <text x="155" y="25" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#d68910">Indicator Summary</text>
+    
+    <!-- Table headers -->
+    <rect x="10" y="35" width="290" height="25" fill="#f9e79f" stroke="#f39c12" stroke-width="1"/>
+    <text x="155" y="52" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#2c3e50">Indicator | Acid | Base</text>
+    
+    <!-- Table rows -->
+    <text x="20" y="80" font-family="Arial" font-size="10" fill="#2c3e50">Litmus</text>
+    <text x="155" y="80" font-family="Arial" font-size="10" fill="#c0392b">Red</text>
+    <text x="240" y="80" font-family="Arial" font-size="10" fill="#16a085">Blue</text>
+    
+    <text x="20" y="105" font-family="Arial" font-size="10" fill="#2c3e50">Phenolphthalein</text>
+    <text x="155" y="105" font-family="Arial" font-size="10" fill="#7f8c8d">Colourless</text>
+    <text x="240" y="105" font-family="Arial" font-size="10" fill="#c71585">Pink</text>
+    
+    <text x="20" y="130" font-family="Arial" font-size="10" fill="#2c3e50">Methyl Orange</text>
+    <text x="155" y="130" font-family="Arial" font-size="10" fill="#c0392b">Red</text>
+    <text x="240" y="130" font-family="Arial" font-size="10" fill="#b8860b">Yellow</text>
+    
+    <text x="20" y="155" font-family="Arial" font-size="10" fill="#2c3e50">Turmeric</text>
+    <text x="155" y="155" font-family="Arial" font-size="10" fill="#daa520">No change</text>
+    <text x="240" y="155" font-family="Arial" font-size="10" fill="#8b4513">Reddish-brown</text>
+    
+    <text x="20" y="180" font-family="Arial" font-size="10" fill="#2c3e50">Red Cabbage</text>
+    <text x="155" y="180" font-family="Arial" font-size="10" fill="#c0392b">Red</text>
+    <text x="240" y="180" font-family="Arial" font-size="10" fill="#27ae60">Green</text>
+    
+    <text x="20" y="205" font-family="Arial" font-size="10" fill="#2c3e50">China Rose</text>
+    <text x="155" y="205" font-family="Arial" font-size="10" fill="#c71585">Dark Pink</text>
+    <text x="240" y="205" font-family="Arial" font-size="10" fill="#27ae60">Green</text>
+    
+    <!-- Olfactory indicators note -->
+    <rect x="10" y="225" width="290" height="45" fill="#e8f8f5" stroke="#1abc9c" stroke-width="1"/>
+    <text x="155" y="242" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#16a085">Olfactory Indicators:</text>
+    <text x="155" y="257" text-anchor="middle" font-family="Arial" font-size="9" fill="#2c3e50">Onion, Vanilla, Clove oil</text>
+    <text x="155" y="268" text-anchor="middle" font-family="Arial" font-size="9" fill="#27ae60">Lose smell in bases</text>
+  </g>
+</svg>

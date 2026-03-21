@@ -101,6 +101,12 @@ $$ A = \frac{22}{7} \times 7 \times 7 = 154 \text{ cm}^2 $$
 
 A **sector** is the region enclosed by two radii and an arc of a circle.
 
+![Sector and Segment of Circle](areas_sector_segment.svg)
+
+**Figure: Sector (left) and Segment (right) of a Circle**
+
+The ASCII diagram below shows the basic structure:
+
 ```
          A
         / \
@@ -108,7 +114,7 @@ A **sector** is the region enclosed by two radii and an arc of a circle.
       /     \
      /       \
     O---------B
-    
+
     O = Center
     OA, OB = Radii
     Arc AB = Arc
@@ -219,6 +225,10 @@ $$ \text{Area of } \Delta = \frac{1}{2} \times r \times r = \frac{1}{2}r^2 $$
 
 **Step 4:** Write final answer with units
 
+![Areas of Combinations of Figures](areas_combinations_figures.svg)
+
+**Figure: Common combinations - Square with Circle, Ring, Semicircle with Triangle, Four Semicircles, Quadrant**
+
 ---
 
 #### Common Combination Types:
@@ -274,6 +284,16 @@ $$ \text{Area of } \Delta = \frac{1}{2} \times r \times r = \frac{1}{2}r^2 $$
 ---
 
 ## 4. Guided Examples
+
+### Real-World Applications
+
+Before we solve examples, let's understand where these concepts are used:
+
+![Applications of Areas Related to Circles](areas_applications.svg)
+
+**Figure: Real-world applications - Clock problems, Grazing areas, Roads around parks, Car wipers**
+
+---
 
 ### Example 1: Area of Sector
 

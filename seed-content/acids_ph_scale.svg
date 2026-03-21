@@ -1,0 +1,104 @@
+<svg width="900" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="900" height="400" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#2c3e50">The pH Scale (0-14)</text>
+  
+  <!-- pH Scale Bar -->
+  <defs>
+    <linearGradient id="phGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff0000;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#ff8800;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#ffcc00;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#00ff00;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#00cc00;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#0088ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8800ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main pH scale bar -->
+  <rect x="50" y="80" width="800" height="60" fill="url(#phGradient)" stroke="#333" stroke-width="2" rx="5"/>
+  
+  <!-- Scale markers -->
+  <g font-family="Arial" font-size="12" fill="#333" text-anchor="middle">
+    <line x1="50" y1="145" x2="50" y2="155" stroke="#333" stroke-width="2"/>
+    <text x="50" y="170" font-weight="bold">0</text>
+    
+    <line x1="107" y1="140" x2="107" y2="150" stroke="#333" stroke-width="1"/>
+    <text x="107" y="165">1</text>
+    
+    <line x1="164" y1="140" x2="164" y2="150" stroke="#333" stroke-width="1"/>
+    <text x="164" y="165">2</text>
+    
+    <line x1="221" y1="140" x2="221" y2="150" stroke="#333" stroke-width="1"/>
+    <text x="221" y="165">3</text>
+    
+    <line x1="279" y1="140" x2="279" y2="150" stroke="#333" stroke-width="1"/>
+    <text x="279" y="165">4</text>
+    
+    <line x1="336" y1="140" x2="336" y2="150" stroke="#333" stroke-width="1"/>
+    <text x="336" y="165">5</text>
+    
+    <line x1="393" y1="140" x2="393" y2="150" stroke="#333" stroke-width="1"/>
+    <text x="393" y="165">6</text>
+    
+    <line x1="450" y1="145" x2="450" y2="155" stroke="#333" stroke-width="2"/>
+    <text x="450" y="170" font-weight="bold">7</text>
+    
+    <line x1="507" y1="140" x2="507" y2="150" stroke="#333" stroke-width="1"/>
+    <text x="507" y="165">8</text>
+    
+    <line x1="564" y1="140" x2="564" y2="150" stroke="#333" stroke-width="1"/>
+    <text x="564" y="165">9</text>
+    
+    <line x1="621" y1="140" x2="621" y2="150" stroke="#333" stroke-width="1"/>
+    <text x="621" y="165">10</text>
+    
+    <line x1="679" y1="140" x2="679" y2="150" stroke="#333" stroke-width="1"/>
+    <text x="679" y="165">11</text>
+    
+    <line x1="736" y1="140" x2="736" y2="150" stroke="#333" stroke-width="1"/>
+    <text x="736" y="165">12</text>
+    
+    <line x1="793" y1="140" x2="793" y2="150" stroke="#333" stroke-width="1"/>
+    <text x="793" y="165">13</text>
+    
+    <line x1="850" y1="145" x2="850" y2="155" stroke="#333" stroke-width="2"/>
+    <text x="850" y="170" font-weight="bold">14</text>
+  </g>
+  
+  <!-- Region labels -->
+  <text x="164" y="70" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#c0392b">ACIDIC</text>
+  <text x="450" y="70" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#27ae60">NEUTRAL</text>
+  <text x="736" y="70" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#8e44ad">BASIC</text>
+  
+  <!-- Examples -->
+  <g font-family="Arial" font-size="11" fill="#333">
+    <!-- Acidic examples -->
+    <text x="70" y="210" font-weight="bold">Acidic Examples:</text>
+    <text x="70" y="230">• Battery acid (pH ~0-1)</text>
+    <text x="70" y="248">• Lemon juice (pH ~2-3)</text>
+    <text x="70" y="266">• Vinegar (pH ~3-4)</text>
+    <text x="70" y="284">• Coffee (pH ~5)</text>
+    <text x="70" y="302">• Milk (pH ~6.5)</text>
+    
+    <!-- Neutral -->
+    <text x="450" y="210" text-anchor="middle" font-weight="bold">Neutral:</text>
+    <text x="450" y="230" text-anchor="middle">• Pure water (pH = 7)</text>
+    <text x="450" y="248" text-anchor="middle">• Blood (pH ~7.4)</text>
+    
+    <!-- Basic examples -->
+    <text x="750" y="210" text-anchor="middle" font-weight="bold">Basic Examples:</text>
+    <text x="750" y="230" text-anchor="middle">• Sea water (pH ~8)</text>
+    <text x="750" y="248" text-anchor="middle">• Soap (pH ~9-10)</text>
+    <text x="750" y="266" text-anchor="middle">• Ammonia (pH ~11)</text>
+    <text x="750" y="284" text-anchor="middle">• Bleach (pH ~12-13)</text>
+  </g>
+  
+  <!-- H+ and OH- indicators -->
+  <text x="164" y="340" text-anchor="middle" font-family="Arial" font-size="13" fill="#c0392b">High H⁺</text>
+  <text x="450" y="340" text-anchor="middle" font-family="Arial" font-size="13" fill="#27ae60">H⁺ = OH⁻</text>
+  <text x="736" y="340" text-anchor="middle" font-family="Arial" font-size="13" fill="#8e44ad">High OH⁻</text>
+</svg>
