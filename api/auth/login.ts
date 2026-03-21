@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { query } from '../db.js';
+import { query, ensureMigrated } from '../db.js';
 import bcrypt from 'bcryptjs';
 
 const SALT_ROUNDS = 10;
@@ -28,6 +28,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
+    await ensureMigrated();
     console.log('Login request received:', req.body);
 
     const { uid, password } = req.body || {};

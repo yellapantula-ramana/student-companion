@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { query } from './db.js';
+import { query, ensureMigrated } from './db.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Enable CORS
@@ -13,6 +13,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
+    await ensureMigrated();
     // GET /syllabus/:id
     if (req.method === 'GET' && req.query.id) {
       const id = Array.isArray(req.query.id) ? req.query.id[0] : req.query.id;

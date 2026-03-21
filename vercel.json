@@ -2,7 +2,17 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "framework": "vite"
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/api/auth/login",           "destination": "/api/auth/login" },
+    { "source": "/api/auth/register",        "destination": "/api/auth/register" },
+    { "source": "/api/health",               "destination": "/api/health" },
+    { "source": "/api/syllabus/:id",         "destination": "/api/syllabus?id=:id" },
+    { "source": "/api/syllabus",             "destination": "/api/syllabus" },
+    { "source": "/api/learning-paths/:id",   "destination": "/api/learning-paths?id=:id" },
+    { "source": "/api/learning-paths",       "destination": "/api/learning-paths" },
+    { "source": "/api/practice-tests",       "destination": "/api/practice-tests" },
+    { "source": "/(.*)",                     "destination": "/index.html" }
+  ]
 }

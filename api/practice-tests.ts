@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { query } from './db.js';
+import { query, ensureMigrated } from './db.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Enable CORS
@@ -13,6 +13,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
+    await ensureMigrated();
     // GET /practice-tests?subject=xxx&chapter=yyy
     if (req.method === 'GET') {
       const { subject, chapter } = req.query;

@@ -11,8 +11,8 @@ const pool = new Pool({
   database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
   port: parseInt(process.env.DB_PORT || '5432'),
-  // SSL required for Neon/Vercel - always enforce SSL
-  ssl: process.env.DATABASE_URL ? true : false,
+  // SSL required for Neon - use rejectUnauthorized: false for Neon
+  ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
   // Optimize for serverless (Vercel)
   max: 1,
   idleTimeoutMillis: 10000,
@@ -31,8 +31,8 @@ export const query = async (text: string, params?: any[]) => {
     const duration = Date.now() - start;
     console.log('Executed query', { text: text.substring(0, 50), duration, rows: result.rowCount });
     return result;
-  } catch (error) {
-    console.error('Query error:', error);
+  } catch (error: any) {
+    console.error('Query error:', error.message);
     throw error;
   }
 };

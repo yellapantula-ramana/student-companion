@@ -12,8 +12,8 @@ const pool = new Pool({
   database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
   port: parseInt(process.env.DB_PORT || '5432'),
-  // SSL required for Neon/Vercel - always enforce SSL
-  ssl: process.env.DATABASE_URL ? true : false,
+  // SSL required for Neon/Vercel - use rejectUnauthorized: false for Neon
+  ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
   // Optimize for serverless (Vercel)
   max: 1,
   idleTimeoutMillis: 10000,
@@ -32,10 +32,51 @@ export const query = async (text: string, params?: any[]) => {
     const duration = Date.now() - start;
     console.log('Executed query', { text: text.substring(0, 50), duration, rows: result.rowCount });
     return result;
-  } catch (error) {
-    console.error('Query error:', error);
+  } catch (error: any) {
+    console.error('Query error:', error.message);
     throw error;
   }
 };
+
+// Run once per cold start to ensure tables exist
+let migrated = false;
+export async function ensureMigrated() {
+  if (migrated) return;
+  await query(`CREATE TABLE IF NOT EXISTS syllabus (
+    id TEXT PRIMARY KEY,
+    subject TEXT NOT NULL,
+    chapters JSONB NOT NULL,
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+  )`);
+  await query(`CREATE TABLE IF NOT EXISTS learning_paths (
+    id TEXT PRIMARY KEY,
+    subject TEXT NOT NULL,
+    chapter TEXT NOT NULL,
+    pdf_url TEXT,
+    content TEXT,
+    is_generated BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+  )`);
+  await query(`CREATE TABLE IF NOT EXISTS practice_tests (
+    id TEXT PRIMARY KEY,
+    subject TEXT NOT NULL,
+    chapter TEXT NOT NULL,
+    test_id TEXT NOT NULL,
+    questions JSONB NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+  )`);
+  await query(`CREATE TABLE IF NOT EXISTS users (
+    uid TEXT PRIMARY KEY,
+    email TEXT,
+    display_name TEXT,
+    photo_url TEXT,
+    password_hash TEXT,
+    role TEXT DEFAULT 'student',
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+  )`);
+  await query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS password_hash TEXT`);
+  migrated = true;
+  console.log('DB migration complete');
+}
 
 export default pool;
